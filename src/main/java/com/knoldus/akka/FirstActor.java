@@ -26,22 +26,24 @@ public class FirstActor extends AbstractActor {
 
 class BadShakespeareanMain {
 
-    private static final ActorSystem system = ActorSystem.apply("BadShakespearean");
-    private static final ActorRef firstActorRef;
+    private final ActorSystem system = ActorSystem.apply("BadShakespearean");
+    private final ActorRef firstActorRef = system.actorOf(Props.create(FirstActor.class));
 
-    static {
-        firstActorRef = system.actorOf(Props.create(FirstActor.class));
-    }
 
-    public static void send(String msg) throws InterruptedException {
+    public void send(String msg) throws InterruptedException {
         System.out.println("Me: " + msg);
         firstActorRef.tell(msg, ActorRef.noSender());
         Thread.sleep(100);
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        send("Good Morning");
-        send("You're terrible");
+    public void actorSystemTerminate() {
         system.terminate();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        BadShakespeareanMain badShakespeareanMain = new BadShakespeareanMain();
+        badShakespeareanMain.send("Good Morning");
+        badShakespeareanMain.send("You're terrible");
+        badShakespeareanMain.actorSystemTerminate();
     }
 }
