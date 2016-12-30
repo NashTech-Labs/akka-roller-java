@@ -1,6 +1,6 @@
 package com.knoldus.akka;
 
-import akka.actor.AbstractLoggingActor;
+import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
@@ -13,14 +13,7 @@ import static java.lang.System.out;
 /**
  * Created by knoldus on 30/12/16.
  */
-public class FirstActor extends AbstractLoggingActor {
-
-    private static final ActorSystem system = ActorSystem.apply("BadShakespearean");
-    private static final ActorRef firstActorRef;
-
-    static {
-        firstActorRef = system.actorOf(props());
-    }
+public class FirstActor extends AbstractActor {
 
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
@@ -29,9 +22,15 @@ public class FirstActor extends AbstractLoggingActor {
                 .matchEquals("You're terrible", msg -> out.println("Actor: Seriously ?"))
                 .build();
     }
+}
 
-    public static Props props() {
-        return Props.create(FirstActor.class);
+class BadShakespeareanMain {
+
+    private static final ActorSystem system = ActorSystem.apply("BadShakespearean");
+    private static final ActorRef firstActorRef;
+
+    static {
+        firstActorRef = system.actorOf(Props.create(FirstActor.class));
     }
 
     public static void send(String msg) throws InterruptedException {
