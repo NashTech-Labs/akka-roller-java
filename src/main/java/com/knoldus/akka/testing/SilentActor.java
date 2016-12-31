@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class SilentActor extends AbstractActor {
 
-    private final List<String> internalState = new ArrayList<>();
+    public final List<String> internalState = new ArrayList<>();
 
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {

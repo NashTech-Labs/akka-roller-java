@@ -6,6 +6,8 @@ import akka.japi.pf.ReceiveBuilder;
 import scala.PartialFunction;
 import scala.runtime.BoxedUnit;
 
+import static java.lang.System.out;
+
 /**
  * Created by knoldus on 31/12/16.
  */
@@ -49,7 +51,9 @@ class NiceActor extends AbstractActor {
 
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
-        return super.receive();
+        return ReceiveBuilder
+                .matchAny(msg -> out.println())
+                .build();
     }
 }
 
