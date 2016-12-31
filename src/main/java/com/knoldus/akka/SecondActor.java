@@ -25,12 +25,12 @@ public class SecondActor extends AbstractActor {
 class CheapShakespeareanMain {
 
     private final ActorSystem system = ActorSystem.apply("CheapShakespeareanMain");
-    private final ActorRef firstActorRef = system.actorOf(Props.create(SecondActor.class));
+    private final ActorRef secondActorRed = system.actorOf(Props.create(SecondActor.class));
 
 
     public void send(String msg) throws InterruptedException {
-        System.out.println("Me: " + msg);
-        firstActorRef.tell(msg, ActorRef.noSender());
+        out.println("Me: " + msg);
+        secondActorRed.tell(msg, ActorRef.noSender());
         Thread.sleep(100);
     }
 

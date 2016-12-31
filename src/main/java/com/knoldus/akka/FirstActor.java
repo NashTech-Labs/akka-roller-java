@@ -31,7 +31,7 @@ class BadShakespeareanMain {
 
 
     public void send(String msg) throws InterruptedException {
-        System.out.println("Me: " + msg);
+        out.println("Me: " + msg);
         firstActorRef.tell(msg, ActorRef.noSender());
         Thread.sleep(100);
     }
