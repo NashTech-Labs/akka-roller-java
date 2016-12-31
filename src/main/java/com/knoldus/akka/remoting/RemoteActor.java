@@ -13,7 +13,7 @@ import scala.runtime.BoxedUnit;
 import static java.lang.System.out;
 
 /**
- * Created by harmeet on 31/12/16.
+ * Created by knoldus on 31/12/16.
  */
 public class RemoteActor extends AbstractActor {
 
