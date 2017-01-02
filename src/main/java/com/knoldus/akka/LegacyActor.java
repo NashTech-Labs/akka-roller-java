@@ -26,9 +26,9 @@ public class LegacyActor extends UntypedActor {
     }
 }
 
-class WrostShakespeareanMain {
+class WorstShakespeareanMain {
 
-    private final ActorSystem system = ActorSystem.apply("WrostShakespeareanMain");
+    private final ActorSystem system = ActorSystem.apply("WorstShakespeareanMain");
     private final ActorRef legacyActorRef = system.actorOf(Props.create(LegacyActor.class));
 
 
@@ -43,9 +43,9 @@ class WrostShakespeareanMain {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        WrostShakespeareanMain wrostShakespeareanMain = new WrostShakespeareanMain();
-        wrostShakespeareanMain.send("Good Morning");
-        wrostShakespeareanMain.send("You're terrible");
-        wrostShakespeareanMain.actorSystemTerminate();
+        WorstShakespeareanMain worstShakespeareanMain = new WorstShakespeareanMain();
+        worstShakespeareanMain.send("Good Morning");
+        worstShakespeareanMain.send("You're terrible");
+        worstShakespeareanMain.actorSystemTerminate();
     }
 }
