@@ -25,7 +25,7 @@ class PrintlnActor extends AbstractActor {
     }
 }
 
-public class RoundRobinRouterExample {
+public class TheRouter {
     public static void main(String[] args) {
         final ActorSystem system = ActorSystem.apply("FaultTestingSystem");
 

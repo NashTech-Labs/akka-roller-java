@@ -44,7 +44,12 @@ class LocalApplication {
         final Config config = ConfigFactory.parseString(configuration);
 
         final ActorSystem system = ActorSystem.apply("Node1", ConfigFactory.load(config));
-        final ActorSelection remoteActorReference = system.actorSelection("akka.tcp://Node3@" + "127.0.0.1" + ":" + 2553 + "/user/Discovery");
+
+
+        final ActorSelection remoteActorReference =
+                system.actorSelection("akka.tcp://Node3@" + "127.0.0.1" + ":" + 2553 + "/user/Discovery");
+
+
         final ActorRef local = system.actorOf(Props.create(LocalActor.class, remoteActorReference));
         final Scanner scanner = new Scanner(System.in);
 

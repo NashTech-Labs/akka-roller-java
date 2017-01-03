@@ -14,9 +14,6 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class SilentActorTest {
 
     private static ActorSystem system;

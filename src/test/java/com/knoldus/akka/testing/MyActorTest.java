@@ -12,9 +12,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class MyActorTest {
 
     private static ActorSystem system;

@@ -8,9 +8,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class MyActorIntegrationTest {
 
     private static ActorSystem system;
