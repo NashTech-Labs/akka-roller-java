@@ -9,9 +9,6 @@ import scala.runtime.BoxedUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class SilentActor extends AbstractActor {
 
     public final List<String> internalState = new ArrayList<>();

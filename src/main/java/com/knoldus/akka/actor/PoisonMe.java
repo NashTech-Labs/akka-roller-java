@@ -7,9 +7,6 @@ import scala.runtime.BoxedUnit;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 public class PoisonMe extends AbstractActor {
 
     @Override
@@ -35,7 +32,7 @@ class PoisonPillMe {
         show.tell("hey4", ActorRef.noSender());
         show.tell("hey5", ActorRef.noSender());
         show.tell("hey6", ActorRef.noSender());
-        show.tell(Kill.getInstance(), ActorRef.noSender()); // Try Kill
+        show.tell(PoisonPill.getInstance(), ActorRef.noSender()); // Try Kill
         show.tell("hey again", ActorRef.noSender());
         system.terminate();
     }

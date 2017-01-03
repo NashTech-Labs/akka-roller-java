@@ -10,9 +10,6 @@ import scala.runtime.BoxedUnit;
 
 import static com.knoldus.akka.actor.Messages.SendMessage;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 public class MessageActor extends AbstractLoggingActor {
 
     @Override

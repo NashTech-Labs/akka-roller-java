@@ -5,9 +5,6 @@ import akka.japi.pf.ReceiveBuilder;
 import scala.PartialFunction;
 import scala.runtime.BoxedUnit;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class MyActor extends AbstractActor {
 
     @Override

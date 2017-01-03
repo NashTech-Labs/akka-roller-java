@@ -10,9 +10,6 @@ import scala.runtime.BoxedUnit;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 public class FirstActor extends AbstractActor {
 
     @Override

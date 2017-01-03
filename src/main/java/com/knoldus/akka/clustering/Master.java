@@ -18,9 +18,6 @@ import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static java.util.stream.Collectors.toList;
 
-/**
- * Created by harmeet on 31/12/16.
- */
 class TransformationFrontend extends AbstractActor {
 
     private List<ActorRef> backends = new ArrayList<>();

@@ -8,9 +8,6 @@ import scala.runtime.BoxedUnit;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 // An annoying Actor that just keeps screaming at us
 class AnnoyingActor extends AbstractActor {
 

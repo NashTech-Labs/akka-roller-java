@@ -7,9 +7,6 @@ import scala.runtime.BoxedUnit;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 class ShowStopper extends AbstractActor {
 
     @Override

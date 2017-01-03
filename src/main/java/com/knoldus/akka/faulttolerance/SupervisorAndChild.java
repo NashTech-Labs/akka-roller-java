@@ -13,9 +13,6 @@ import java.util.concurrent.TimeUnit;
 import static akka.actor.SupervisorStrategy.*;
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 class Supervisor extends AbstractLoggingActor {
 
     @Override

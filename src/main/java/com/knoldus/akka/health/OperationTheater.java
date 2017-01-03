@@ -7,9 +7,6 @@ import akka.japi.pf.ReceiveBuilder;
 import scala.PartialFunction;
 import scala.runtime.BoxedUnit;
 
-/**
- * Created by knoldus on 2/1/17.
- */
 public class OperationTheater extends AbstractLoggingActor {
 
     private final ActorRef monitor = context().actorOf(Props.create(Monitor.class), "Monitor");

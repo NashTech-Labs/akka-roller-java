@@ -15,9 +15,6 @@ import static akka.pattern.PatternsCS.ask;
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 
 class A1 extends AbstractActor {
     @Override

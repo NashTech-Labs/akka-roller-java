@@ -13,9 +13,6 @@ import java.util.stream.IntStream;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 class PrintlnActor extends AbstractActor {
 
     @Override

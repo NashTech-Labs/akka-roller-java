@@ -16,9 +16,6 @@ import java.util.Spliterator;
 import java.util.stream.StreamSupport;
 
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class TransformationBackend extends AbstractLoggingActor {
 
     private final Cluster cluster = Cluster.get(context().system());

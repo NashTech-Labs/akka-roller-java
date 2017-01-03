@@ -8,9 +8,6 @@ import com.typesafe.config.Config;
 import scala.PartialFunction;
 import scala.runtime.BoxedUnit;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 class MyPrioMailbox extends UnboundedStablePriorityMailbox {
 
     // needed for reflective instantiation

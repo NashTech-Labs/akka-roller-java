@@ -10,26 +10,22 @@ import scala.PartialFunction;
 import scala.runtime.BoxedUnit;
 
 import static akka.pattern.PatternsCS.ask;
-import static com.knoldus.akka.actor.ParkingLot.attendant;
-import static com.knoldus.akka.actor.ParkingLot.slotMonitor;
+import static com.knoldus.akka.actor.YAPark.attendant;
+import static com.knoldus.akka.actor.YAPark.slotMonitor;
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/**
- * Created by knoldus on 30/12/16.
- */
-
-class Driver extends AbstractActor {
+class MyDriver extends AbstractActor {
 
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
         return ReceiveBuilder
                 .matchEquals("Request Parking", msg -> attendant.tell("LetMePark", self()))
-                .matchAny(msg -> out.println("Driver")).build();
+                .matchAny(msg -> out.println("MyDriver")).build();
     }
 }
 
-class SlotMonitor extends AbstractActor {
+class MySlotMonitor extends AbstractActor {
 
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
@@ -39,7 +35,7 @@ class SlotMonitor extends AbstractActor {
     }
 }
 
-class Attendant extends AbstractActor {
+class MyAttendant extends AbstractActor {
 
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
@@ -50,16 +46,16 @@ class Attendant extends AbstractActor {
                             .toCompletableFuture().get(5, SECONDS);
                     out.println("parking at " + parkingSlot);
                 })
-                .matchAny(msg -> out.println("Attendant")).build();
+                .matchAny(msg -> out.println("MyAttendant")).build();
     }
 }
 
-public class ParkingLot {
+public class YAPark {
 
     public static final ActorSystem system = ActorSystem.apply("PL");
-    public static final ActorRef driver = system.actorOf(Props.create(Driver.class), "Driver");
-    public static final ActorRef slotMonitor = system.actorOf(Props.create(SlotMonitor.class), "SlotMonitor");
-    public static final ActorRef attendant = system.actorOf(Props.create(Attendant.class), "Attendant");
+    public static final ActorRef driver = system.actorOf(Props.create(MyDriver.class), "MyDriver");
+    public static final ActorRef slotMonitor = system.actorOf(Props.create(MySlotMonitor.class), "MySlotMonitor");
+    public static final ActorRef attendant = system.actorOf(Props.create(MyAttendant.class), "MyAttendant");
 
     public static void main(String[] args) {
         driver.tell("Request Parking", ActorRef.noSender());

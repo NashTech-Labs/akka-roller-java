@@ -11,9 +11,6 @@ import static akka.actor.SupervisorStrategy.restart;
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.MINUTES;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 
 class MyActor extends AbstractActor {
 

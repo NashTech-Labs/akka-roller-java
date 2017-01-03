@@ -16,9 +16,6 @@ import static akka.pattern.PatternsCS.ask;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/**
- * Created by knoldus on 2/1/17.
- */
 public class Doctor {
     public static void main(String[] args) throws Exception {
         final ActorSystem system = ActorSystem.create("OperationSimulation");
@@ -48,9 +45,9 @@ public class Doctor {
         );
 
         // Shut down
-        system.scheduler().scheduleOnce(Duration.apply(3, SECONDS),
-                () -> system.shutdown(), ec
-        );
+//        system.scheduler().scheduleOnce(Duration.apply(3, SECONDS),
+//                () -> system.shutdown(), ec
+//        );
 
     }
 }

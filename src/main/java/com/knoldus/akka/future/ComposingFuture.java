@@ -4,9 +4,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 public class ComposingFuture {
 
     public int timeTakingIdentityFunction(int number) throws RuntimeException {

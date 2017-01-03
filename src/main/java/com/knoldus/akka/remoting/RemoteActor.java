@@ -12,9 +12,6 @@ import scala.runtime.BoxedUnit;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class RemoteActor extends AbstractActor {
 
     @Override

@@ -7,9 +7,6 @@ import com.knoldus.akka.health.Monitor.RateChange;
 import scala.PartialFunction;
 import scala.runtime.BoxedUnit;
 
-/**
- * Created by knoldus on 2/1/17.
- */
 public class HeartLungMachine extends AbstractActor {
 
     private final ActorRef monitorRef;

@@ -10,9 +10,6 @@ import scala.runtime.BoxedUnit;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by knoldus on 2/1/17.
- */
 public class Monitor extends AbstractLoggingActor {
 
     // We need an "ExecutionContext" for the scheduler.  This

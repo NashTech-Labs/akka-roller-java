@@ -8,9 +8,6 @@ import akka.japi.pf.ReceiveBuilder;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 31/12/16.
- */
 public class SecondActor extends AbstractActor {
 
     public SecondActor() {

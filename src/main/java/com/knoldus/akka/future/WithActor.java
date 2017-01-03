@@ -14,9 +14,6 @@ import java.util.concurrent.CompletableFuture;
 import static akka.pattern.PatternsCS.ask;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 public class WithActor {
 
     public static void main(String[] args) throws Exception {

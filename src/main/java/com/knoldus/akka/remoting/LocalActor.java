@@ -12,9 +12,6 @@ import java.util.Scanner;
 
 import static java.lang.System.out;
 
-/**
- * Created by knoldus on 30/12/16.
- */
 public class LocalActor extends AbstractActor {
 
     private final ActorSelection remote;
