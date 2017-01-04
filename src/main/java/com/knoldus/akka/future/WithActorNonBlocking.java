@@ -21,7 +21,8 @@ class EmailSender extends AbstractActor {
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
         return ReceiveBuilder
-                .matchAny(msg -> sender().tell("Hello", self()))
+                .match(String.class, msg -> sender().tell("Hello", self()))
+                .matchAny(msg -> { throw new Exception(); })
                 .build();
     }
 }
@@ -42,11 +43,39 @@ public class WithActorNonBlocking {
         final ActorRef emailSender = system.actorOf(Props.create(EmailSender.class));
         final ActorRef pdfGenerator = system.actorOf(Props.create(PDFGenerator.class));
         final Future<Object> f = Patterns.ask(emailSender, "Hello", Timeout.apply(5, SECONDS));
+        //final Future<Object> f = Patterns.ask(emailSender, 1001, Timeout.apply(5, SECONDS));
 
 
         final ExecutionContext ec = system.dispatcher();
 
-       // f.onSuccess(new PrintResult<Object>(), system.dispatcher());
+        f.onSuccess(new PartialFunction<Object, Object>() {
+            @Override
+            public boolean isDefinedAt(Object x) {
+                return true;
+            }
+
+            @Override
+            public Object apply(Object v1) {
+                System.out.println("success");
+                final String msg = (String) v1;
+                pdfGenerator.tell(msg, ActorRef.noSender());
+                return v1;
+            }
+        }, ec);
+
+        f.onFailure(new PartialFunction<Throwable, Object>() {
+            @Override
+            public boolean isDefinedAt(Throwable x) {
+                return true;
+            }
+
+            @Override
+            public Object apply(Throwable v1) {
+                System.out.println("failed");
+                pdfGenerator.tell(v1, ActorRef.noSender());
+                return v1;
+            }
+        }, ec);
 
 
     }
