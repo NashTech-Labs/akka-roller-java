@@ -10,6 +10,7 @@ import scala.PartialFunction;
 import scala.runtime.BoxedUnit;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 import static akka.pattern.PatternsCS.ask;
 import static java.lang.System.out;
@@ -41,10 +42,8 @@ public class WithActorNonBlockingUsingJava {
         final ActorSystem system = ActorSystem.apply("FaultTestingSystem");
         final ActorRef notificationSender = system.actorOf(Props.create(NotificationSender.class));
         final ActorRef fusionGenerator = system.actorOf(Props.create(FusionGenerator.class));
-        final CompletableFuture<Object> f = ask(notificationSender, "Hello", Timeout.apply(5, SECONDS))
-                .toCompletableFuture();
-//        final CompletableFuture<Object> f = ask(notificationSender, 1001, Timeout.apply(5, SECONDS))
-//                .toCompletableFuture();
+        final CompletionStage<Object> f = ask(notificationSender, "Hello", Timeout.apply(5, SECONDS));
+//        final CompletionStage<Object> f = ask(notificationSender, 1001, Timeout.apply(5, SECONDS));
 
         f.thenAccept(msg -> {
             System.out.println("success");
