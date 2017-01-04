@@ -4,19 +4,20 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.dispatch.OnSuccess;
 import akka.japi.pf.ReceiveBuilder;
+import akka.pattern.Patterns;
 import akka.util.Timeout;
 import scala.PartialFunction;
+import scala.concurrent.ExecutionContext;
+import scala.concurrent.Future;
 import scala.runtime.BoxedUnit;
 
-import java.util.concurrent.CompletableFuture;
-
-import static akka.pattern.PatternsCS.ask;
 import static java.lang.System.out;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
-class A1 extends AbstractActor {
+class EmailSender extends AbstractActor {
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
         return ReceiveBuilder
@@ -25,7 +26,7 @@ class A1 extends AbstractActor {
     }
 }
 
-class A2 extends AbstractActor {
+class PDFGenerator extends AbstractActor {
     @Override
     public PartialFunction<Object, BoxedUnit> receive() {
         return ReceiveBuilder
@@ -38,19 +39,21 @@ class A2 extends AbstractActor {
 public class WithActorNonBlocking {
     public static void main(String[] args) {
         final ActorSystem system = ActorSystem.apply("FaultTestingSystem");
-        final ActorRef a1 = system.actorOf(Props.create(A1.class));
-        final ActorRef a2 = system.actorOf(Props.create(A2.class));
-        final CompletableFuture<Object> f = ask(a1, "Hello", Timeout.apply(5, SECONDS))
-                .toCompletableFuture();
+        final ActorRef emailSender = system.actorOf(Props.create(EmailSender.class));
+        final ActorRef pdfGenerator = system.actorOf(Props.create(PDFGenerator.class));
+        final Future<Object> f = Patterns.ask(emailSender, "Hello", Timeout.apply(5, SECONDS));
 
-        f.thenAccept(value -> {
-            out.println("success");
-            a2.tell(value, ActorRef.noSender());
-        })
-        .exceptionally(ex -> {
-            out.println("failed");
-            a2.tell(ex, ActorRef.noSender());
-            return null;
-        });
+
+        final ExecutionContext ec = system.dispatcher();
+
+       // f.onSuccess(new PrintResult<Object>(), system.dispatcher());
+
+
     }
 }
+
+//public final class PrintResult<T> extends OnSuccess<T> {
+//    @Override public final void onSuccess(T t) {
+//        System.out.println(t);
+//    }
+//}
